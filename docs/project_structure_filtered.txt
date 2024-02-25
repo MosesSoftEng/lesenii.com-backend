@@ -1,0 +1,9 @@
+--- Folder Structure ---
+LICENSE
+README.md
+[app]
+    ├── Cargo.toml
+    ├── [src]
+        └── main.rs
+
+--- File Contents ---
