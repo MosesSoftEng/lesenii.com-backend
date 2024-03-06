@@ -1,5 +1,7 @@
-# Use rust base image
-FROM docker.io/library/rust:1.76.0-buster
+# Dockerfile for development stage.
+
+# Use rust base image.
+FROM docker.io/library/rust:1.76-slim-buster
 
 # Set the working directory.
 WORKDIR /app
@@ -10,11 +12,11 @@ COPY /app .
 # Build your project
 RUN cargo build
 
-# Allow traffic from any IP.
+# Allow traffic from any .
 ENV ROCKET_ADDRESS=0.0.0.0
 
 # Port to use.
 EXPOSE 8000
 
-# Run your project
+# Run your project.
 CMD ["cargo", "run"]
