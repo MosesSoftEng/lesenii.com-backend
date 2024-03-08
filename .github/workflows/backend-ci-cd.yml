@@ -25,9 +25,9 @@ jobs:
             #   run: podman images
 
             - name: Podman Operations
-            run: |
-              podman --version
-              podman pull rust
-              podman build --tag lesenii:dev1.0.0 .
-              podman images
+              run: |
+                podman --version
+                podman pull rust
+                podman build --tag lesenii:dev1.0.0 .
+                podman images
 
