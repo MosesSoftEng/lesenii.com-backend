@@ -9,17 +9,25 @@ jobs:
             - name: Test CI
               run: echo "Test CI"
 
-            - name: Checkout Repository
-              uses: actions/checkout@v3
+            # - name: Checkout Repository
+            #   uses: actions/checkout@v3
 
             - name: Test CI
               run: podman --version
 
-            - name: Pull rust image.
-              run: podman pull rust
+            # - name: Pull rust image.
+            #   run: podman pull rust
 
-            - name: Create docker image from current directory.
-              run: podman build --tag lesenii:dev1.0.0 .
+            # - name: Create docker image from current directory.
+            #   run: podman build --tag lesenii:dev1.0.0 .
 
-            - name: List docker images.
-              run: podman images
+            # - name: List docker images.
+            #   run: podman images
+
+            - name: Podman Operations
+            run: |
+              podman --version
+              podman pull rust
+              podman build --tag lesenii:dev1.0.0 .
+              podman images
+
