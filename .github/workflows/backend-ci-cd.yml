@@ -1,0 +1,44 @@
+name: Backend CICD Github actions.
+
+on:
+  pull_request:
+    branches: [dev]
+
+jobs:
+    create-docker-image-ci:
+        runs-on: ubuntu-latest
+        steps:
+            # Copy your repository's code into the running job's file system 
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Test CI
+              run: podman --version
+
+            # - name: Pull rust image.
+            #   run: podman pull rust
+
+            # - name: Create docker image from current directory.
+            #   run: podman build --tag lesenii:dev1.0.0 .
+
+            # - name: List docker images.
+            #   run: podman images
+
+            - name: Create docker image from current directory.
+              run: |
+                # Pull rust image.
+                podman pull rust
+
+                #Create docker image from current directory.
+                podman build --tag lesenii:dev1.0.0 .
+
+            - name: Push docker image to docker hub.
+              run: |
+                # Login to docker hub.
+                podman login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+                # Tag image to docker hub.
+                podman tag localhost/lesenii:dev1.0.0 mosessofteng/lesenii:dev1.0.0
+
+                # Push image to docker hub.
+                podman push mosessofteng/lesenii:dev1.0.0

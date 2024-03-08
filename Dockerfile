@@ -6,10 +6,10 @@ FROM docker.io/library/rust:1.76-slim-buster
 # Set the working directory.
 WORKDIR /app
 
-# Copy your project files
+# Copy your project files.
 COPY /app .
 
-# Build your project
+# Build your project.
 RUN cargo build
 
 # Allow traffic from any .

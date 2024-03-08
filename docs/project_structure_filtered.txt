@@ -1,4 +1,6 @@
 --- Folder Structure ---
+.dockerignore
+Dockerfile
 LICENSE
 README.md
 [app]

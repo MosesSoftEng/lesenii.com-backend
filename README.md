@@ -54,12 +54,25 @@ cargo run --release
 # Pull rust image.
 podman pull rust
 
-# Create docker image.
-podman build --tag lesenii:dev1.0.0 .
+# Create docker image from current directory.
+podman build --tag lesenii:dev1.0.1 .
+
+# List docker images.
+podman images
 
 # Run docker image with tag latest.
-podman run  -p 8000:8000 localhost/lesenii:dev1.0.0
+podman run  -p 8000:8000 localhost/lesenii:dev1.0.
 
 # Enter running docker container.
 podman exec -it <CONTAINER_ID> /bin/bash 
+```
+
+# Continous Integration.
+```bash
+# Create a .github/workflows directory.
+mkdir -p .github/workflows
+
+
+touch .github/workflows/backend-ci-cd.yml
+
 ```
