@@ -24,9 +24,19 @@ jobs:
 
             - name: Create docker image from current directory.
               run: |
-                podman --version
+                # Pull rust image.
                 podman pull rust
-                # Create docker image from current directory.
-                podman build --tag lesenii:dev1.0.0 .
-                podman images
 
+                #Create docker image from current directory.
+                podman build --tag lesenii:dev1.0.0 .
+
+            - name: Push docker image to docker hub.
+              run: |
+                # Login to docker hub.
+                podman login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+                # Tag image to docker hub.
+                podman tag localhost/lesenii:dev1.0.0 mosessofteng/lesenii:dev1.0.0
+
+                # Push image to docker hub.
+                podman push mosessofteng/lesenii:dev1.0.0
