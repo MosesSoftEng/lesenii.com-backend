@@ -6,11 +6,9 @@ jobs:
     create-docker-image-ci:
         runs-on: ubuntu-latest
         steps:
-            - name: Test CI
-              run: echo "Test CI"
-
-            # - name: Checkout Repository
-            #   uses: actions/checkout@v3
+            # Copy your repository's code into the running job's file system 
+            - name: Checkout Repository
+              uses: actions/checkout@v3
 
             - name: Test CI
               run: podman --version
@@ -24,7 +22,7 @@ jobs:
             # - name: List docker images.
             #   run: podman images
 
-            - name: Podman Operations
+            - name: Create docker image from current directory.
               run: |
                 podman --version
                 podman pull rust
