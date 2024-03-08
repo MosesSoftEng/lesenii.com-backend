@@ -1,0 +1,10 @@
+name: Backend CICD Github actions.
+
+on: [push]
+
+jobs:
+    create-docker-image-ci:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test CI
+              run: echo "Test CI"
