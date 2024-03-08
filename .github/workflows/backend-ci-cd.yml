@@ -26,6 +26,7 @@ jobs:
               run: |
                 podman --version
                 podman pull rust
+                # Create docker image from current directory.
                 podman build --tag lesenii:dev1.0.0 .
                 podman images
 
