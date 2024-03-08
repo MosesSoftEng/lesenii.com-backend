@@ -9,11 +9,14 @@ jobs:
             - name: Test CI
               run: echo "Test CI"
 
-            - name: Pull rust image.
-              run: podman pull rust
+            - name: Test CI
+              run: podman --version
 
-            - name: Create docker image from current directory.
-              run: podman build --tag lesenii:dev1.0.0 .
+            # - name: Pull rust image.
+            #   run: podman pull rust
 
-            - name: List docker images.
-              run: podman images
+            # - name: Create docker image from current directory.
+            #   run: podman build --tag lesenii:dev1.0.0 .
+
+            # - name: List docker images.
+            #   run: podman images

@@ -55,13 +55,13 @@ cargo run --release
 podman pull rust
 
 # Create docker image from current directory.
-podman build --tag lesenii:dev1.0.0 .
+podman build --tag lesenii:dev1.0.1 .
 
 # List docker images.
 podman images
 
 # Run docker image with tag latest.
-podman run  -p 8000:8000 localhost/lesenii:dev1.0.0
+podman run  -p 8000:8000 localhost/lesenii:dev1.0.
 
 # Enter running docker container.
 podman exec -it <CONTAINER_ID> /bin/bash 
