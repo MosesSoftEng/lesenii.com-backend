@@ -47,7 +47,7 @@ jobs:
 
             - name: Update server container.
               run: |
-                echo ${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }} > /tmp/private_key
+                echo "${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }}" > /tmp/private_key
 
                 ls /tmp/private_key -la
 
