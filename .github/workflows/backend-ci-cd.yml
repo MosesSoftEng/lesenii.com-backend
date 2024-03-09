@@ -1,8 +1,10 @@
 name: Backend CICD Github actions.
 
-on:
-  pull_request:
-    branches: [dev]
+# on:
+#   pull_request:
+#     branches: [dev]
+
+on: [push]
 
 jobs:
     create-docker-image-ci:
@@ -42,3 +44,8 @@ jobs:
 
                 # Push image to docker hub.
                 podman push mosessofteng/lesenii:dev1.0.0
+
+            - name: Update server container.
+              run: |
+                ssh -i <(echo "${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }}") root@134.209.236.179 ./test_ssh_access.sh
+

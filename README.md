@@ -61,7 +61,16 @@ podman build --tag lesenii:dev1.0.1 .
 podman images
 
 # Run docker image with tag latest.
-podman run  -p 8000:8000 localhost/lesenii:dev1.0.
+podman run -p 8000:8000 localhost/lesenii:dev1.0.1
+
+# Run image detached and bind host port 8000 to container's port 8000
+podman run -d --name lessnii-rocket-web-server -p 8000:8000 localhost/lesenii:dev1.0.1
+
+# List running continers.
+podman ps
+
+# See log of detached container.
+podman logs lessnii-rocket-web-server
 
 # Enter running docker container.
 podman exec -it <CONTAINER_ID> /bin/bash 
@@ -76,3 +85,16 @@ mkdir -p .github/workflows
 touch .github/workflows/backend-ci-cd.yml
 
 ```
+
+# SSH
+
+## sshpass
+```bash
+# SSH package to help authorize command to server.
+sudo apt update
+sudo apt install sshpass
+
+# Confirm installation.
+sshpass -V
+```
+
