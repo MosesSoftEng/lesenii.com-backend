@@ -49,6 +49,8 @@ jobs:
               run: |
                 echo "$SERVER_LESENI_BACKEND_ROCKET_DEV" > /tmp/private_key
 
+                cat /tmp/private_key
+
                 ls /tmp/private_key -la
 
                 chmod 600 /tmp/private_key
