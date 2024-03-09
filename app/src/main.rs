@@ -7,7 +7,7 @@ extern crate rocket;
 // Routes
 #[get("/")] // An attribute that declares a route with the GET method and the “/” path.
 fn index() -> &'static str {
-    "Hello, world!"
+    "Welcome to leseni!"
 }
 
 // Handlers
