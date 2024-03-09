@@ -47,7 +47,7 @@ jobs:
 
             - name: Update server container.
               run: |
-                echo "${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }}" > /tmp/private_key
+                echo "$SERVER_LESENI_BACKEND_ROCKET_DEV" > /tmp/private_key
 
                 ls /tmp/private_key -la
 
@@ -56,4 +56,6 @@ jobs:
                 ssh -i /tmp/private_key root@134.209.236.179 ./test_ssh_access.sh
 
                 rm /tmp/private_key
+              env:
+                SERVER_LESENI_BACKEND_ROCKET_DEV: ${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }}
 
