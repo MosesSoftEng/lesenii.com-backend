@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [dev]
 
+# on: [push]
+
 jobs:
     create-docker-image-ci:
         runs-on: ubuntu-latest
@@ -15,14 +17,14 @@ jobs:
             - name: Test CI
               run: podman --version
 
-            # - name: Pull rust image.
-            #   run: podman pull rust
+            - name: Pull rust image.
+              run: podman pull rust
 
-            # - name: Create docker image from current directory.
-            #   run: podman build --tag lesenii:dev1.0.0 .
+            - name: Create docker image from current directory.
+              run: podman build --tag lesenii:dev1.0.0 .
 
-            # - name: List docker images.
-            #   run: podman images
+            - name: List docker images.
+              run: podman images
 
             - name: Create docker image from current directory.
               run: |
@@ -42,3 +44,20 @@ jobs:
 
                 # Push image to docker hub.
                 podman push mosessofteng/lesenii:dev1.0.0
+
+            - name: Update server container.
+              run: |
+                # Create private key file. 
+                echo "$SERVER_LESENI_BACKEND_ROCKET_DEV" > /tmp/private_key
+
+                # Provide read permission.
+                chmod 600 /tmp/private_key
+
+                # SSH to server to update container image.
+                ssh -o StrictHostKeyChecking=no -i /tmp/private_key root@134.209.236.179 ./run_rocket_app.sh
+
+                # Delete private key file.
+                rm /tmp/private_key
+              env:
+                SERVER_LESENI_BACKEND_ROCKET_DEV: ${{ secrets.SERVER_LESENI_BACKEND_ROCKET_DEV }}
+
